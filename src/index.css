@@ -47,7 +47,11 @@ body{
   font-size: 0.75rem;
   
 }
-
+.meme{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+}
 .meme__input-container{
  display: flex;
  align-items: center;
@@ -75,4 +79,8 @@ body{
   font-family: 'karla', 'sans-serif';
   font-weight: bold;
   padding: 0.75em;
+}
+.meme__image{
+  max-width: 80%;
+  margin-top: 1em;
 }
