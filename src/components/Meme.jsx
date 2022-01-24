@@ -6,6 +6,17 @@ export default function Meme(){
          bottomText: "",
          randomImage: "http://i.imgflip.com/1bij.jpg"
      });
+     function handleChange(event){
+         const {name,value,checked,type} = event.target
+        setMeme(prev => {
+            return{
+                ...prev,
+            [name]: type === "checkbox" ? checked : value
+            } 
+
+        })
+     }
+
      const  [allMemeImages, setAllMemeImages] = useState(memesData)
     function getMemeImage() {
         const memesArray = memesData.data.memes
@@ -20,11 +31,15 @@ export default function Meme(){
     return (
         <div className="meme">
             <div className="meme__input-container">
-                <input type="text" placeholder="Shut up" className="meme__input"/>
-                <input type="text" placeholder="and take my money" className="meme__input" />
+                <input type="text" placeholder="Shut up" className="meme__input" name="topText" onChange={handleChange} value={meme.topText}/>
+                <input type="text" placeholder="and take my money" className="meme__input" name="bottomText" onChange={handleChange} value={meme.bottomText} />
             </div>
             <button className="meme__button" onClick={getMemeImage}>Get a new meme image</button>
-            <img src={meme.randomImage} alt="" className="meme__image" />
+            <div className="meme">
+                <img src={meme.randomImage} className="meme--image" />
+                <h2 className="meme--text top">{meme.topText}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText}</h2>
+            </div>
         </div>
     )
 }
